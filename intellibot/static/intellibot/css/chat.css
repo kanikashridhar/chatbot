@@ -146,15 +146,15 @@ font-size: 10px;
         background: #eee;
     border-radius: 5px;
 }
-
-.jumbotron h1, .jumbotron p{
-    text-align: center
+.jumbotron h1{
+    text-align: center;
 }
-
+.jumbotron p{
+    text-align: center;
+}
 .jumbotron img{
     height: 200px;
 }
-
 #done-box{
     text-align: center
 }
