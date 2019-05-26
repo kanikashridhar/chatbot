@@ -1,0 +1,38 @@
+[
+    {
+      "model": "intellibot.Question",
+      "fields": {
+        "context": "Name",
+        "question_text": "What is your name?"
+      }
+    },
+    {
+      "model": "intellibot.Question",
+      "fields": {
+        "context": "Gender",
+        "question_text": "Are you male or female?"
+      }
+    },
+    {
+      "model": "intellibot.Question",
+      "fields": {
+        "context": "DOB",
+        "question_text": "When were you born?"
+    }
+    },
+    {
+      "model": "intellibot.Question",
+      "fields": {
+        "context": "Smoker",
+        "question_text": "Are you a smoker?"
+      }
+    },
+    {
+      "model": "intellibot.Question",
+      "fields": {
+        "context": "DONE",
+        "question_text": "Thank you. Press \"Done\" for results."
+      }
+    }
+  ]
+  
