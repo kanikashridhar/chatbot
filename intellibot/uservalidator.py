@@ -14,12 +14,12 @@ def validate_name(text):
     return True 
 
 def validate_gender(text):
-    if 'MALE' in text.upper() or 'FEMALE' in text.upper():
-       return True
+    if [gen for gen in ('MALE','FEMALE','MAN','BOY','GIRL','LADY') if gen in text.upper()]:
+        return True
     return False
 
 def validate_smoker(text):
-    if 'YES' in text.upper() or 'NO' in text.upper():
+    if [x for x in ('YES','YEAH','YO','ALWAYS','NO','NOT','NEVER') if x in text.upper()]:
        return True
     return False
 

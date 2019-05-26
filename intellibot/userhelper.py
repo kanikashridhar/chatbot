@@ -6,7 +6,7 @@ def getUserResponseValue(text, context):
         'NAME': getName,
         'GENDER': getGender,
         'DOB': getDOB,
-        'SMOKER': isSmoker
+        'SMOKER': getSmoker
     }
     return retriever.get(context.upper())(text)
 
@@ -14,12 +14,10 @@ def getName(text):
     return text
 
 def getGender(text):
-    if 'FEMALE' in text.upper():
-        return 'Female'
-    elif 'MALE' in text.upper():
-        return 'Male'
-    else:
-        return 'N/A'
+    try:
+        return ['Female' for x in ('FEMALE','LADY','GIRL') if x in text.upper()][0]
+    except IndexError:
+        return ['Male' for x in ('MALE','BOY','MAN') if x in text.upper()][0]
 
 def getDOB(text):
     date_format = '%d-%m-%Y'
@@ -32,11 +30,11 @@ def getDOB(text):
     except Exception:
         return False 
 
-def isSmoker(text):
-    if 'YES' in text.upper():
-        return 'Smoker'
-    elif 'NO' in text.upper():
-        return 'Non-Smoker'
+def getSmoker(text):
+    try:
+        return ['Smoker' for x in ('YES','YEAH','YO','ALWAYS') if x in text.upper()][0]
+    except IndexError:
+        return ['Non-Smoker' for x in ('NO','NOPE','NEVER') if x in text.upper()][0]
 
 def getFinalMessage(user):
     print(user)
