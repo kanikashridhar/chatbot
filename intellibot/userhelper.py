@@ -25,8 +25,8 @@ def getDOB(text):
     try:
         date_capture = (re.search('\d{2}-\d{2}-\d{4}',text))
         date_string  = date_capture.group(0)
-        date_obj = datetime.datetime.strptime(date_string, date_format)
-        return date_obj
+       # date_obj = datetime.datetime.strptime(date_string, date_format)
+        return date_string
     except Exception:
         return False 
 
@@ -40,7 +40,3 @@ def getFinalMessage(user):
     print(user)
     message = '{} was born in {} and is a {} and {}'
     return message.format(user.name, user.DOB, user.gender, user.smoker)
-
-def getUserBy(uname, udob):
-    #TODO - Fix this ?
-    return UserInfo.objects.filter(name=uname, DOB=udob)

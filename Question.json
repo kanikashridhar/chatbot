@@ -12,15 +12,15 @@
       "fields": {
         "context": "Gender",
         "question_text": "Are you male or female?",
-        "hint": "Sorry I didn't get that. Can you please answer again "
+        "hint": "Sorry I didn't get that. Can you please answer again ?"
       }
     },
     {
       "model": "intellibot.Question",
       "fields": {
         "context": "DOB",
-        "question_text": "When were you born? (DD-MM-YYY) ",
-        "hint": "Apologies we accept date in the format DD-MM-YYYY only "
+        "question_text": "When were you born? (DD-MM-YYYY) ",
+        "hint": "Apologies we accept date in the format DD-MM-YYYY and not in future only. "
     }
     },
     {

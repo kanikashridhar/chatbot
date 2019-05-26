@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.utils import timezone
 
-from intellibot.userhelper import getGender,getSmoker
+from intellibot.userhelper import getGender,getSmoker,getDOB
 
 class HelpersTest(TestCase):
 
@@ -29,3 +29,11 @@ class HelpersTest(TestCase):
 
         val = getSmoker("NOT")
         self.assertEqual(val,"Non-Smoker")
+
+
+    def test_get_DOB(self):
+        val = getDOB("My DOB is 04-08-1986")
+        self.assertEqual(val,'04-08-1986')
+
+        val = getDOB("My DOB is")
+        self.assertEqual(val,False)

@@ -1,7 +1,7 @@
 from channels.generic.websocket import WebsocketConsumer
 from intellibot.uservalidator import validateUserResponse
 from intellibot.utils import createMessage, createBotMessage, getNextQuestion, getResponseFor
-from intellibot.userhelper import getUserResponseValue, getFinalMessage, getUserBy
+from intellibot.userhelper import getUserResponseValue, getFinalMessage
 from intellibot.models import UserInfo
 import json
 

@@ -1,6 +1,7 @@
 import datetime,re
 from intellibot.models import UserInfo
 
+
 def validateUserResponse(text, context):
     validator = {
         'NAME' : validate_name,
@@ -30,7 +31,12 @@ def validate_DOB(text):
         date_capture = (re.search('\d{2}-\d{2}-\d{4}',text))
         date_string  = date_capture.group(0)
         date_obj = datetime.datetime.strptime(date_string, date_format)
-        print(date_obj)
+
+        #Check if the date is in future, return false
+        now = datetime.datetime.now()
+        if (date_obj > now):
+            return False
+        
         return True
     except Exception:
         return False 
