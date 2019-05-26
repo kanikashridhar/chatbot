@@ -12,7 +12,7 @@ docker build -t chatbot:v1.0 .
 ```
 docker run -p 8000:8000 chatbot:v1.0
 ```
-This will start the server and you can find the bot by browsing to [http://localhost:8000/chat/lobby ](http://127.0.0.1:8000/chat/lobby)
+This will start the server and you can find the bot by browsing to [http://localhost:8000/chat/ ](http://127.0.0.1:8000/chat/)
 
 ## Option 2 - Without Docker
 * Install Python 3.x if not already
@@ -35,7 +35,7 @@ python3 manage.py makemigrations intellibot
 python3 manage.py migrate
 python3 manage.py migrate intellibot
 ```
-* To flush database changes and load static Questions data into DB
+* To load static Questions data into DB
 ```
 python3 manage.py loaddata Questions.json
 ```
@@ -47,7 +47,7 @@ python3 manage.py collectstatic
 ```
 python3 manage.py runserver
 ```
-Now you can access the bot at [http://127.0.0.1:8000/chat/lobby](http://127.0.0.1:8000/chat/lobby)
+Now you can access the bot at [http://127.0.0.1:8000/chat/](http://127.0.0.1:8000/chat/)
 
 # Inspiration
 The codebase makes use of Django Channels and is based on the documentation [here](https://channels.readthedocs.io/en/latest/tutorial/part_2.html)
