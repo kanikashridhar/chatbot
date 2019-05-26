@@ -11,10 +11,12 @@ pip install -r requirement.txt
 
 # prepare DB
 python manage.py makemigrations intellibot
+
 python manage.py migrate intellibot
 
 # To flush database changes and load static Questions data into DB
 python manage.py flush
+
 python manage.py loaddata Questions.json
 ~
 
