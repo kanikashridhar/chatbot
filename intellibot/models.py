@@ -5,6 +5,7 @@ from django.utils import timezone
 class Question(models.Model):
    context = models.CharField(max_length=50)
    question_text = models.CharField(max_length=200)
+   hint = models.CharField(max_length=200, default='')
    date_created = models.DateTimeField(default=timezone.now())
 
    def __str__(self):

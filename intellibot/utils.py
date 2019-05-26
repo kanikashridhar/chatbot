@@ -24,6 +24,9 @@ def createBotMessage(text, command, mid, context):
 def getNextQuestion(id):
     return Question.objects.get(pk=id)
 
+def getHintForQuestion(id):
+    return Question.objects.get(pk=id).hint
+
 def getResponseFor(text, command, context, id):
     # validate the text for given context 
     # and either return the same question as ID if check fails

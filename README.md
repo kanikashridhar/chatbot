@@ -10,14 +10,19 @@ source venv/bin/activate
 pip install -r requirement.txt
 
 # prepare DB
-python manage.py makemigrations intellibot
+python3 manage.py makemigrations
+python3 manage.py makemigrations intellibot
 
-python manage.py migrate intellibot
+python3 manage.py migrate
+python3 manage.py migrate intellibot
 
 # To flush database changes and load static Questions data into DB
-python manage.py flush
+#python manage.py flush
 
-python manage.py loaddata Questions.json
+python3 manage.py loaddata Questions.json
+
+# Execute the server
+http://127.0.0.1:8000/chat/lobby
 ~
 
 

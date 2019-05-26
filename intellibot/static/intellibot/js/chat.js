@@ -122,6 +122,6 @@ function sendDoneMessage(){
 	message = {}
 	message.command = 'finish'
 	chatsock.send(JSON.stringify(message));
-	$("#done-box").attr("disabled", true);
+	$("#doneButton").attr("disabled", "disabled");
 }
 		

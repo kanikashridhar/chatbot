@@ -14,10 +14,10 @@ def getName(text):
     return text
 
 def getGender(text):
-    if 'MALE' in text.upper():
-        return 'Male'
-    elif 'FEMALE' in text.upper():
+    if 'FEMALE' in text.upper():
         return 'Female'
+    elif 'MALE' in text.upper():
+        return 'Male'
     else:
         return 'N/A'
 
@@ -40,7 +40,7 @@ def isSmoker(text):
 
 def getFinalMessage(user):
     print(user)
-    message = '{} was born in {} and is a {} {}'
+    message = '{} was born in {} and is a {} and {}'
     return message.format(user.name, user.DOB, user.gender, user.smoker)
 
 def getUserBy(uname, udob):
