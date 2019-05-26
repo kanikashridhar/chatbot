@@ -1,9 +1,10 @@
 from channels.generic.websocket import WebsocketConsumer
 from intellibot.uservalidator import validateUserResponse
-from intellibot.utils import createMessage, createBotMessage, getNextQuestion, getResponseFor
+from intellibot.utils import createMessage, createBotMessage, getNextQuestion
 from intellibot.userhelper import getUserResponseValue, getFinalMessage
 from intellibot.models import UserInfo
 import json
+import random
 
 class ChatConsumer(WebsocketConsumer):
     def connect(self):
@@ -32,9 +33,12 @@ class ChatConsumer(WebsocketConsumer):
             greetingMessage = createBotMessage('Welcome to Medius Health Intelligent Bot System', 'send', '-1', 'Greeting')
             self.send(text_data=json.dumps(greetingMessage))
             # get first question 
-            firstQues =  getResponseFor(receivedText, command, 'Init', 0)
-            #firstQues = getNextQuestion(0)
-            self.send(text_data=json.dumps(firstQues))
+            next_question = getNextQuestion(1)
+            first_question = createBotMessage(next_question.question_text, 
+                                              "reply", 
+                                               next_question.id, 
+                                               next_question.context)
+            self.send(text_data=json.dumps(first_question))
 
         elif('finish' == command.lower()):
             # get user details from session, create an object of UserInfo model and save that in database 
@@ -47,10 +51,9 @@ class ChatConsumer(WebsocketConsumer):
 
             try:
                 user.save()
-            except ValueError as ve:
-                print(ve)
-                pass
-                # fail
+            except Exception as e:
+                print(e)
+                
             print('save success')
             finalMessage = createBotMessage(getFinalMessage(user), 'send', '-100', 'finish')
             self.send(text_data=json.dumps(finalMessage))
@@ -72,11 +75,7 @@ class ChatConsumer(WebsocketConsumer):
         if receivedText != '':
 
             new_id = -1
-            if ('start' == command.lower() and receivedId == 0):
-                new_id = receivedId + 1
-                
-            #User response is validated
-            elif (validateUserResponse(receivedText, receivedContext)):   
+            if (validateUserResponse(receivedText, receivedContext)):   
                 new_id = receivedId + 1 
                 # save val in user session for context
                 val = getUserResponseValue(receivedText, receivedContext)
@@ -89,9 +88,14 @@ class ChatConsumer(WebsocketConsumer):
             
             next_question = getNextQuestion(new_id)
             returnMessage = next_question.question_text
+
             if(userinput == False):
-                returnMessage = next_question.hint + returnMessage
-            result = createBotMessage(returnMessage, 'reply', next_question.id, next_question.context)
+                returnMessage = next_question.hint.split(":")[random.randint(0,1)] 
+
+            result = createBotMessage(returnMessage, 
+                                      'reply', 
+                                       next_question.id, 
+                                       next_question.context)
             
             self.send(text_data=json.dumps(result))
             
