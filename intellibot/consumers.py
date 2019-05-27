@@ -30,7 +30,7 @@ class ChatConsumer(WebsocketConsumer):
         command = text_data_json['command']
         if ('start' == command.lower()):
             # send greeting and one question
-            greetingMessage = createBotMessage('Welcome to Medius Health Intelligent Bot System', 'send', '-1', 'Greeting')
+            greetingMessage = createBotMessage('Hello, I am going to ask you few questions that will help me know you better?', 'send', '-1', 'Greeting')
             self.send(text_data=json.dumps(greetingMessage))
             # get first question 
             next_question = getNextQuestion(1)
@@ -90,7 +90,14 @@ class ChatConsumer(WebsocketConsumer):
             returnMessage = next_question.question_text
 
             if(userinput == False):
-                returnMessage = next_question.hint.split(":")[random.randint(0,1)] 
+                NameMessage = ""
+                try:
+                    uname = self.scope['session']['Name'] 
+                    if random.randint(-4,2) >= 0 : 
+                       NameMessage = uname +", "
+                except Exception:
+                    uname = ''
+                returnMessage = NameMessage + next_question.hint.split(":")[random.randint(0,1)] 
 
             result = createBotMessage(returnMessage, 
                                       'reply', 

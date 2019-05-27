@@ -1,6 +1,6 @@
 import datetime,re
 from intellibot.models import UserInfo
-
+from intellibot.utils import searchkey
 
 def validateUserResponse(text, context):
     validator = {
@@ -12,17 +12,24 @@ def validateUserResponse(text, context):
     return validator.get(context.upper())(text)
 
 def validate_name(text):
-    return True 
+    try:
+        name = re.search("^[A-z][A-z|\.|\s]+$",text).group(0)
+        return True
+    except Exception:
+        return False
 
 def validate_gender(text):
-    if [gen for gen in ('MALE','FEMALE','MAN','BOY','GIRL','LADY') if gen in text.upper()]:
-        return True
-    return False
+    try:
+        return [True for key in ('MALE','FEMALE','MAN','BOY','GIRL','LADY','M','F') if searchkey(key,text)][0]
+    except IndexError:
+        False
+
 
 def validate_smoker(text):
-    if [x for x in ('YES','YEAH','YO','ALWAYS','NO','NOT','NEVER') if x in text.upper()]:
-       return True
-    return False
+    try:
+        return [True for key in ('YES','YEAH','YO','ALWAYS','OCCASIONALLY','OFTEN','Y','NO','NOT','NOPE','NEVER','NOTHING','N') if searchkey(key,text)][0]
+    except IndexError:
+        False
 
 def validate_DOB(text):
     date_format = '%d-%m-%Y'

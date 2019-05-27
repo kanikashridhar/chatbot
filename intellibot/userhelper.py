@@ -1,5 +1,6 @@
 import datetime,re
 from intellibot.models import UserInfo
+from intellibot.utils import searchkey
 
 def getUserResponseValue(text, context):
     retriever = {
@@ -11,13 +12,17 @@ def getUserResponseValue(text, context):
     return retriever.get(context.upper())(text)
 
 def getName(text):
-    return text
+    try:
+       name = re.search("^[A-z][A-z|\.|\s]+$",text).group(0)
+       return name
+    except Exception:
+       return False
 
 def getGender(text):
     try:
-        return ['Female' for x in ('FEMALE','LADY','GIRL') if x in text.upper()][0]
+        return ['Female' for key in ('FEMALE','LADY','GIRL','F') if searchkey(key,text)][0]
     except IndexError:
-        return ['Male' for x in ('MALE','BOY','MAN') if x in text.upper()][0]
+        return ['Male' for key in ('MALE','BOY','MAN','M') if searchkey(key,text)][0]
 
 def getDOB(text):
     date_format = '%d-%m-%Y'
@@ -32,9 +37,9 @@ def getDOB(text):
 
 def getSmoker(text):
     try:
-        return ['Smoker' for x in ('YES','YEAH','YO','ALWAYS') if x in text.upper()][0]
+        return ['Smoker' for key in ('YES','YEAH','YO','ALWAYS','OCCASIONALLY','OFTEN','Y') if searchkey(key,text)][0]
     except IndexError:
-        return ['Non-Smoker' for x in ('NO','NOPE','NEVER') if x in text.upper()][0]
+        return ['Non-Smoker' for key in ('NO','NOT','NOPE','NEVER','NOTHING','N') if searchkey(key,text)][0]
 
 def getFinalMessage(user):
     print(user)

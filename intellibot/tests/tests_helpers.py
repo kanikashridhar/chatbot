@@ -13,7 +13,7 @@ class HelpersTest(TestCase):
 
     def test_validate_gender(self):
         val = validate_gender("ABC")
-        self.assertEqual(val,False)
+        self.assertEqual(val,None)
 
         val = validate_gender("My Gender is MALE")
         self.assertEqual(val,True)
@@ -22,7 +22,14 @@ class HelpersTest(TestCase):
         self.assertEqual(val,True)
 
         val = validate_gender("I WON'T TELL")
-        self.assertEqual(val,False)
+        self.assertEqual(val,None)
+
+        val = validate_gender("F")
+        self.assertEqual(val,True)
+      
+        val = validate_gender("M")
+        self.assertEqual(val,True)
+
 
     def test_validate_smoker(self):
         val = validate_smoker("YES I AM A SMOKER")
@@ -32,7 +39,13 @@ class HelpersTest(TestCase):
         self.assertEqual(val,True)
 
         val = validate_smoker("ABC")
-        self.assertEqual(val,False)    
+        self.assertEqual(val,None)    
+
+        val = validate_smoker("N")
+        self.assertEqual(val,True)    
+        
+        val = validate_smoker("Y")
+        self.assertEqual(val,True)  
 
     def test_validate_DOB(self):
         val = validate_DOB("My DOB is 04-08-1986")

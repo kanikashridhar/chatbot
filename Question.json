@@ -4,7 +4,7 @@
       "fields": {
         "context": "Name",
         "question_text": "What is your name?",
-        "hint": ""
+        "hint": "Sorry, Name should contains only alphabets: Looks like a typo!! Please Renter your name"
       }
     },
     {
@@ -12,7 +12,7 @@
       "fields": {
         "context": "Gender",
         "question_text": "Are you male or female?",
-        "hint": "Sorry I didn't get that. Can you please answer again ?:I am afraid, you typed something wrong"
+        "hint": "Sorry I didn't get that. Can you please answer again ?:Oops,incorrect input. Please Enter Male/Female) "
       }
     },
     {
