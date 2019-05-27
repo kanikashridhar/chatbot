@@ -38,7 +38,7 @@ python3 manage.py migrate intellibot
 ```
 * To load static Questions data into DB
 ```
-python3 manage.py loaddata Questions.json
+python3 manage.py loaddata Question.json
 ```
 * We disabled the DEBUG mode in settings s using whitenoise to serve the static files
 ```
