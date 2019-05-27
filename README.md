@@ -48,6 +48,12 @@ python3 manage.py loaddata Question.json
 ```
 python3 manage.py collectstatic
 ```
+
+* Execute unit tests (if required)
+```
+python manage.py test intellibot/tests
+```
+
 * Run the server
 ```
 python3 manage.py runserver
