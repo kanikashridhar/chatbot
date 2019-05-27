@@ -18,7 +18,8 @@ This will start the server and you can find the bot by browsing to [http://local
 * Install Python 3.x if not already
 * Create virtual env
 ```
-python -m venv venv
+cd chatbot
+python3 -m venv venv
 ```
 * activate the env
 ```
