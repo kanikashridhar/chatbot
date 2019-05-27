@@ -4,6 +4,10 @@ Minimal chatbot using Django
 # How to Run
 
 ## Option1 - Using Docker
+* cd localdir
+```
+cd chatbot
+```
 * Build the docker image
 ```
 docker build -t chatbot:v1.0 .
