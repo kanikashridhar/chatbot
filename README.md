@@ -27,7 +27,7 @@ source venv/bin/activate
 ```
 * Now install the requirements
 ```
-pip install -r requirement.txt
+pip install -r requirements.txt
 ```
 * prepare DB
 ```
